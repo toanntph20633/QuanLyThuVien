@@ -19,7 +19,9 @@ public enum StatusAction {
     LOANSLIP_TRAQUAHAN(10, "Trả quá hạn"),
     LOANSLIPDETAIL_DANGMUON(11, "Đang mượn"),
     LOANSLIPDETAIL_CHUATRA(12, "Quá hạn chưa trả"),
-    LOANSLIPDETAIL_DATRA(13, "Đã trả");
+    LOANSLIPDETAIL_DATRA(13, "Đã trả"),
+
+    LOANSLIPDETAIL_TRAMUON(14,"Trả muộn");
 
     private int value;
     private String value2;

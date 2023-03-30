@@ -1,8 +1,8 @@
 package com.example.quanlythuvien.entities.base;
 
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
 
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import java.time.LocalDate;
 
 public class CommonEntityListener {

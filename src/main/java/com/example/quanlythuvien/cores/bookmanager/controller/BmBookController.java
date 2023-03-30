@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("book-manager/api/v1")
+@RequestMapping("/admin/book-manager/api/v1")
 public class BmBookController {
     @Autowired
     private BmBookService bmBookService;

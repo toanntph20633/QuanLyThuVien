@@ -12,4 +12,7 @@ import java.util.Optional;
 @Repository
 public interface BbLoanSlipRepository extends LoanSlipRepository {
     Optional<LoanSlip> findByLoanSlipCodeAndStatusActionInAndStatusLiveIn(String code, Collection<Integer> action, Collection<Integer> live);
+
+    Optional<LoanSlip> findByLoanSlipCodeAndStatusAction(String code, Integer status);
+
 }

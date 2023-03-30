@@ -17,12 +17,12 @@ import com.example.quanlythuvien.exceptions.exception.BadRequestException;
 import com.example.quanlythuvien.exceptions.exception.NotFoundException;
 import com.example.quanlythuvien.utilities.enumclass.StatusAction;
 import com.example.quanlythuvien.utilities.enumclass.StatusLive;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -74,6 +74,7 @@ public class BmBookServiceImpl implements BmBookService {
         }
     }
 
+    @Transactional
     @Override
     public void update(BmBookUpdateReq req) {
         Book book = bmBookRepository.findById(req.getId()).
@@ -86,6 +87,7 @@ public class BmBookServiceImpl implements BmBookService {
         bmBookRepository.save(book);
     }
 
+    @Transactional
     @Override
     public void delete(UUID id) {
         Book book = bmBookRepository.findById(id).

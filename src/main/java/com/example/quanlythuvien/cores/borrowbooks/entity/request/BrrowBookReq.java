@@ -16,7 +16,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 public class BrrowBookReq {
-    private UUID StudentId;
+    private UUID userID;
+    private UUID studentId;
     private String loanSlipCode;
     private List<UUID> bookDetailIds;
     private LocalDate lastDate;
