@@ -1,4 +1,4 @@
-package com.example.quanlythuvien.security.config;
+package com.example.quanlythuvien.security.repository;
 
 import com.example.quanlythuvien.entities.Accounts;
 import org.springframework.stereotype.Repository;

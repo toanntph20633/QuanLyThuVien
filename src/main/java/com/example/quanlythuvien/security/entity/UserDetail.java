@@ -1,16 +1,17 @@
-package com.example.quanlythuvien.security.config;
+package com.example.quanlythuvien.security.entity;
 
 import com.example.quanlythuvien.entities.Accounts;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
-@Setter
 @Getter
 public class UserDetail implements UserDetails {
     private Accounts accounts;
@@ -18,7 +19,8 @@ public class UserDetail implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return accounts.getRolesAccounts().stream()
+                .map(x -> new SimpleGrantedAuthority(x.getRolesId().getRoleName())).collect(Collectors.toList());
     }
 
     @Override

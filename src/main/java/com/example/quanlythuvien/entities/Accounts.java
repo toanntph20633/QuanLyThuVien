@@ -35,7 +35,7 @@ public class Accounts extends CommonEntity {
     @JoinColumn(name = "customer_id")
     private Users customerId;
 
-    @OneToMany(mappedBy = "accountsId", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "accountsId", fetch = FetchType.EAGER)
     private Set<RolesAccounts> rolesAccounts;
 
 
