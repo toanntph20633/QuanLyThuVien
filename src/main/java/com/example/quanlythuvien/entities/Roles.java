@@ -2,17 +2,16 @@ package com.example.quanlythuvien.entities;
 
 import com.example.quanlythuvien.entities.base.CommonEntity;
 
+import jakarta.persistence.FetchType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import java.util.Set;
 
 @Entity

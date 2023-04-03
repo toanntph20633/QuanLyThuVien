@@ -1,5 +1,6 @@
 package com.example.quanlythuvien.entities.base;
 
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 
 import lombok.Getter;
@@ -7,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Column;
 import java.time.LocalDate;
 import java.util.UUID;
 @Getter
