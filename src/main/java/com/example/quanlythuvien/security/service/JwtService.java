@@ -19,17 +19,13 @@ import java.util.function.Function;
 public class JwtService {
     private static final String SECRET_KEY = "4D6251655468576D5A7134743777397A24432646294A404E635266556A586E32";
 
-    public String extractAccountName(String token) {
+    public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
-    private Claims extractAllClaims(String token) {
-        return Jwts
-                .parserBuilder()
-                .setSigningKey(getSignKey())
-                .build()
-                .parseClaimsJwt(token)
-                .getBody();
+    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
+        final Claims claims = extractAllClaims(token);
+        return claimsResolver.apply(claims);
     }
 
     public String generateToken(UserDetails userDetails) {
@@ -37,22 +33,22 @@ public class JwtService {
     }
 
     public String generateToken(
-            Map<String, Object> extractClaims,
+            Map<String, Object> extraClaims,
             UserDetails userDetails
     ) {
         return Jwts
                 .builder()
-                .setClaims(extractClaims)
+                .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
-                .signWith(getSignKey(), SignatureAlgorithm.HS256)
+                .setExpiration(new Date(System.currentTimeMillis() + 10000000 * 60 * 24))
+                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
     public boolean isTokenValid(String token, UserDetails userDetails) {
-        final String username = extractAccountName(token);
-        return (username.equals(userDetails.getUsername())) && isTokenExpired(token);
+        final String username = extractUsername(token);
+        return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
 
     private boolean isTokenExpired(String token) {
@@ -63,13 +59,17 @@ public class JwtService {
         return extractClaim(token, Claims::getExpiration);
     }
 
-    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
-        final Claims claims = extractAllClaims(token);
-        return claimsResolver.apply(claims);
+    private Claims extractAllClaims(String token) {
+        return Jwts
+                .parserBuilder()
+                .setSigningKey(getSignInKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
     }
 
-    private Key getSignKey() {
-        byte[] keyByte = Decoders.BASE64.decode(SECRET_KEY);
-        return Keys.hmacShaKeyFor(keyByte);
+    private Key getSignInKey() {
+        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
+        return Keys.hmacShaKeyFor(keyBytes);
     }
 }

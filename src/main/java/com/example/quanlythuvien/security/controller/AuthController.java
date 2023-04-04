@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/auth")
-@RequiredArgsConstructor
 public class AuthController {
     @Autowired
     AuthenticationManager authenticationManager;
@@ -38,10 +37,7 @@ public class AuthController {
     }
 
 
-    @GetMapping("/random")
-    public String randomStuff() {
-        return "hhihhii";
-    }
+
 
 
 }
