@@ -18,7 +18,7 @@ public class JwtProvider {
     private String jwtSecret="sIoVC8OFOgmxbk9XRYtY2zMKXuYXBGL2d3x1IV37";
 
     // Jwt Expiration in millis
-    private Long jwtExpiration = 60000L;
+    private Long jwtExpiration = 86400000L;
 
     private Claims parseToken(String token) {
         // Create JwtParser
