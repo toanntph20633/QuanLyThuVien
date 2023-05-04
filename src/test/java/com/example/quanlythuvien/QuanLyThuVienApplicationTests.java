@@ -1,8 +1,8 @@
 package com.example.quanlythuvien;
 
+import com.example.quanlythuvien.cores.auth.repository.ScAccountRepository;
 import com.example.quanlythuvien.cores.borrowbooks.repository.BbLoanSlipDetailRepository;
 import com.example.quanlythuvien.entities.Accounts;
-import com.example.quanlythuvien.security.repository.ScAccountRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

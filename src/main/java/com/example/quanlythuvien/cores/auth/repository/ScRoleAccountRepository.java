@@ -1,4 +1,4 @@
-package com.example.quanlythuvien.security.repository;
+package com.example.quanlythuvien.cores.auth.repository;
 
 import org.springframework.stereotype.Repository;
 import repositories.AccountRoleRepository;

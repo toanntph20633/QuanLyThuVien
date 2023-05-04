@@ -1,7 +1,6 @@
-package com.example.quanlythuvien.security.repository;
+package com.example.quanlythuvien.cores.auth.repository;
 
 import com.example.quanlythuvien.entities.Users;
-import com.example.quanlythuvien.utilities.enumclass.StatusLive;
 import org.springframework.stereotype.Repository;
 import repositories.UserRepository;
 

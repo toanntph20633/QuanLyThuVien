@@ -1,6 +1,5 @@
-package com.example.quanlythuvien.security.service;
+package com.example.quanlythuvien.cores.auth.service;
 
-import com.example.quanlythuvien.security.entity.UserDetail;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

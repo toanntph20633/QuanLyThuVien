@@ -1,4 +1,4 @@
-package com.example.quanlythuvien.security.entity.request;
+package com.example.quanlythuvien.cores.auth.entity.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
