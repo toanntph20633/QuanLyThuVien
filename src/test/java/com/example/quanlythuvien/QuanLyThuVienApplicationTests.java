@@ -23,7 +23,7 @@ class QuanLyThuVienApplicationTests {
 //                , List.of(StatusAction.LOANSLIPDETAIL_DANGMUON.getValue())));
 
 
-        Accounts accounts = accountRepository.findByAccountName("toan8977").get();
+        Accounts accounts = accountRepository.findByAccountName("ly123").get();
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         accounts.setAcountPass(passwordEncoder.encode(accounts.getAcountPass()));
         accountRepository.save(accounts);

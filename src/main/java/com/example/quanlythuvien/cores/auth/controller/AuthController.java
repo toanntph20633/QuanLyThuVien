@@ -8,6 +8,7 @@ import com.example.quanlythuvien.cores.auth.security.JwtProvider;
 import com.example.quanlythuvien.cores.auth.service.UserDetailCustomService;
 import com.example.quanlythuvien.entities.Accounts;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,21 +31,21 @@ public class AuthController {
     private PasswordEncoder passwordEncoder;
 
     @PostMapping("/token")
-    public String getToken(@RequestBody LoginRequest request) throws Exception {
+    public ResponseEntity<LoginRespone> getToken(@RequestBody LoginRequest request) throws Exception {
         // Get user details
         UserDetails userDetails = userDetailsService.loadUserByUsername(request.getAccount());
 
         if (passwordEncoder.matches(request.getPassword(), userDetails.getPassword())) {
             // Generate token
-            return jwtProvider.generateToken(request.getAccount());
+            return ResponseEntity.ok(LoginRespone.builder().token(jwtProvider.generateToken(request.getAccount())).userDetails(userDetails).build());
         }
 
         throw new Exception("User details invalid.");
     }
 
-    @PostMapping("/createUser")
-    public String createUser(@RequestBody RegisterReq req) throws Exception {
-        Accounts accounts = userDetailsService.saveUser(req);
-        return getToken(new LoginRequest(accounts.getAccountName(), accounts.getPassword()));
-    }
+//    @PostMapping("/createUser")
+//    public String createUser(@RequestBody RegisterReq req) throws Exception {
+//        Accounts accounts = userDetailsService.saveUser(req);
+//        return getToken(new LoginRequest(accounts.getAccountName(), accounts.getPassword()));
+//    }
 }
